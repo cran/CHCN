@@ -29,14 +29,53 @@
 \tabular{ll}{
 Package: \tab CHCN\cr
 Type: \tab Package\cr
-Version: \tab 1.2\cr
-Date: \tab 2011-08-05\cr
+Version: \tab 1.3\cr
+Date: \tab 2011-09-20\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 LazyData: \tab FALSE\cr
 }
-  
 }
+\section{ key functions and building the database}{
+  The process of building the database  is shown in the demo files.
+  The process starts by downloading the master station list. The format
+  of this list has changed somewhat since the first publication of this
+  code, so version prior to 1.3 will be broken by that change.
+  The first call to make is  \code{downloadMaster()} That call creates
+  a master list of all stations and their web ids. Next, we create
+  a list of monthly stations from that master list using
+  \code{ Stations <- writeMonthlyStations()} This writes a file of the 
+  stations that report monthly. Then we scrape the website:
+  \code{scrapeToCsv(Stations)}, passing that function our list
+  of monthly stations. When this process completes we check for
+  missing or empty csvfiles: \code{EMPTY <- getEmptyCsv()}. If the list
+  is null then we have no empty downloads. Checking for missing
+  downloads is accomplished by \code{getMissingScrape}. Assuming
+  that all files are downloaded, then we can proceed to create
+  datasets and inventories. \code{data <- createDataset()} will
+  create a dataset by reading all the csv files. As there is
+  more than temperature data here, we wantto save it all:
+  \code{writeData(data)}. Next, we create an inventory of
+  all the stations: \code{inv  <- createInventory()}. This
+  inventory can be saved with a simple \code{write.table}.
+  When we save this we preserve all the orginal metadata in the
+  format we downloaded it in: \code{write.table(inv,"masterInventory.inv")}.
+  Next for working with other packages ( like RghcnV3) we want to
+  save data in a friendly format: \code{writeInventory(inv)} will
+  write a GHCN style inventory with variables named appropriately and
+  put into the correct columns for RghcnV3. Lastly, we want to
+  select certain data from the master datafile and write it out.
+  To select Tmean we do the following 
+  \code{Mean <- formatGhcn(data, dataColumn = 7)}. Data column
+  7 ( use colnames(data) to see the entire list of options ).
+  The variables are :
+  lastly, we write out the data in ghcn format
+  \code{writeGhcn(data, directory = DATA.DIRECTORY, filename = "TaveCHCN.dat")}
+   
+
+}
+  
+ 
 \author{
 Steven Mosher
 
@@ -51,10 +90,25 @@ Maintainer: Steven Mosher<moshersteven@gmail.com>
  
 \examples{
 \dontrun{
-   Stations <- writeMonthlyStations()
-   scrapeToCsv(Stations,get=1:100)
-   Inv <- createInventory()
-   data <-createDataset(Ids = STARTING.STATION.ID:(STARTING.STATION.ID + 99))
+     downloadMaster()
+     Stations <- writeMonthlyStations()
+     scrapeToCsv(Stations)
+     EMPTY <- getEmptyCsv()
+     if (is.null(EMPTY)){
+         data <- createDataset()
+         ###  save all the data
+         writeData(data)
+         inv  <- createInventory()
+         write.table(inv,"masterInventory.inv")
+         # write a ghcn style inventory
+         writeInventory(inv)
+         # select Tave data
+         Mean <- formatGhcn(data, dataColumn = 7)
+         writeGhcn(Mean)
+ 
+} else{
+  scrapeToCsv(EMPTY)
+}
 
 }
  

@@ -4,11 +4,11 @@ writeMonthlyStations <- function(filename = MASTER.STATION.LIST, outfile = MONTH
     LookUpInfo <- read.csv(filename,stringsAsFactors=FALSE)
     # first row is bogosity
     LookUpInfo <- LookUpInfo[-1,]
-    Monthly    <- LookUpInfo[,c(5,6,8)]
-    FirstYear  <- substr(Monthly$mlyRange,1,4)
-    Data       <- data.frame(Name    = Monthly$name,
-                             Year    = substr(Monthly$mlyRange,1,4),
-                             WebId   = Monthly$webid)
+     
+     
+    Data       <- data.frame(Name    = LookUpInfo$name,
+                             Year    = substr(LookUpInfo$mlyRange,1,4),
+                             WebId   = LookUpInfo$webid)
 
     dex <-  which(Data$Year == "N/A")
     Data <- Data[-dex,]

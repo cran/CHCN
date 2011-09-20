@@ -1,4 +1,4 @@
-6938a180bcd3f9dca56dd123bad17a5e *DESCRIPTION
+6ed734d9b36b42fedc66bf6a149ba4c6 *DESCRIPTION
 df390c53434517b304ac5db487184641 *NAMESPACE
 1d82434b706f56ce8f3cc23da7073e89 *R/Url.R
 19e760bc27307b4d41ab5515c65e04b1 *R/createDataset.R
@@ -6,15 +6,17 @@ dca76e2f4e321f3497d4857f889906bf *R/createInventory.R
 09746b2bfeb6f7f6cc1f4a74bfec086b *R/downloadMaster.R
 beb957af8ba28b71ed53aded14107fd3 *R/formatGhcn.R
 d9f583552f3a40fd8528cf1018ebcf04 *R/getEmptyCsv.R
-3cdaf228c64d8062908ca7f55ccba548 *R/getMissingScrape.R
+eb1af899e41a6aa42883cd746456a631 *R/getMissingScrape.R
 8414d88d14e93652c2cf2ca1c2cb7df2 *R/readMonthlyCsv.R
 fee84a9f800ebdba0ce65bee4a8978b5 *R/scrapeToCsv.R
 ac86c8ea483a1fc22729ef9f818b01a8 *R/writeData.R
 03b59210b918763db1a21142da2df832 *R/writeGhcn.R
 a297c46384fbeeb8d119bef9074346fd *R/writeInventory.R
-cf4cc3fd7e5bfd7ba25a12b983c493e0 *R/writeMonthlyStations.R
+051d348684982607b6b11ab54ef3c68c *R/writeMonthlyStations.R
+cbce7802b178cab7b61117f04421c3c9 *demo/00Index
+9ca18e77b85a4cefbd51ecdab2c4ea84 *demo/CreateCHCN.R
 ed8e5377548fe31e7858ee5789d850df *man/BASE.URL.Rd
-f90ebfc6a63a218e61d2b8a4c4a56687 *man/CHCN-package.Rd
+f57d27b8974ed7e617be04f3f4a6f23e *man/CHCN-package.Rd
 03b04a3ebef5853af1a19ff317288d73 *man/DATA.DIRECTORY.Rd
 6c01009c7267b00fb4c2de974cc22dea *man/FORMAT.URL.Rd
 01ba06dbe2b6c82ce869a9af0dfaa4eb *man/MASTER.STATION.LIST.Rd

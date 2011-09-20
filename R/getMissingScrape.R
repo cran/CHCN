@@ -9,6 +9,7 @@ getMissingScrape <- function(monthlyList = MONTHLY.STATION.LIST, directory = "En
   ids <- as.numeric(substring(csvFiles,dirChar, dirChar + 7))
   missing <- setdiff(allId, ids)
   dex <- which(allId %in% missing)
+  if (length(dex) == 0) dex <- NULL
   return(dex)
   
   
