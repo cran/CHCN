@@ -29,8 +29,8 @@
 \tabular{ll}{
 Package: \tab CHCN\cr
 Type: \tab Package\cr
-Version: \tab 1.3\cr
-Date: \tab 2011-09-20\cr
+Version: \tab 1.4\cr
+Date: \tab 2012-04-27\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 LazyData: \tab FALSE\cr
