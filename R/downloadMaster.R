@@ -1,5 +1,8 @@
 downloadMaster <- function(url = STATION.URL, localFile = MASTER.STATION.LIST){
-  
-  download.file(url,destfile = localFile, mode ="wb")
+  require(RCurl)
+   
+   X<-getURLContent(url, ssl.verifypeer = FALSE,verbose = TRUE)
+   Xcsv <- read.csv(textConnection(X),stringsAsFactors = FALSE)
+   write.csv(Xcsv,localFile)
   
 }

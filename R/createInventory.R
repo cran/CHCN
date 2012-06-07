@@ -11,10 +11,10 @@ createInventory   <- function(directory = "EnvCanada"){
                           Lat       = vector(mode = "numeric",   length = stations),
                           Lon       = vector(mode = "numeric",   length = stations),
                           Altitude  = vector(mode = "numeric",   length = stations),
-                          ClimateId = rep(NA,stations),
+                          Id        = rep(NA,stations),
                           WMO       = vector(mode = "numeric",   length = stations),
                           TCid      = rep(NA,stations),
-                          Id        = ids) 
+                          downloadId        = ids) 
  
      
     for( files in 1 :length(csvFiles)){
@@ -28,7 +28,7 @@ createInventory   <- function(directory = "EnvCanada"){
         Inventory$Lat[files]       <- inv$V2[2]
         Inventory$Lon[files]       <- inv$V3[2]
         Inventory$Altitude[files]  <- inv$V4[2]
-        Inventory$ClimateId[files] <- inv$V5[2]
+        Inventory$Id[files]        <- inv$V5[2]
         Inventory$WMO[files]       <- inv$V6[2]
         Inventory$TCid[files]      <- inv$V7[2]
          
